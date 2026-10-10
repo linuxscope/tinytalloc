@@ -33,10 +33,6 @@
 #include "replace.h"
 #include "talloc.h"
 
-#ifdef HAVE_SYS_AUXV_H
-#include <sys/auxv.h>
-#endif
-
 #if (TALLOC_VERSION_MAJOR != TALLOC_BUILD_VERSION_MAJOR)
 #error "TALLOC_VERSION_MAJOR != TALLOC_BUILD_VERSION_MAJOR"
 #endif
@@ -2574,14 +2570,6 @@ _PUBLIC_ char *talloc_strndup_append_buffer(char *s, const char *a, size_t n)
 
 	return __talloc_strlendup_append(s, slen, a, strnlen(a, n));
 }
-
-#ifndef HAVE_VA_COPY
-#ifdef HAVE___VA_COPY
-#define va_copy(dest, src) __va_copy(dest, src)
-#else
-#define va_copy(dest, src) (dest) = (src)
-#endif
-#endif
 
 static struct talloc_chunk *_vasprintf_tc(const void *t,
 					  const char *fmt,
