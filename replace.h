@@ -22,5 +22,4 @@
 #include <limits.h>
 #include <sys/param.h>
 #include <stdbool.h>
-#include <crypt.h>
 #endif
